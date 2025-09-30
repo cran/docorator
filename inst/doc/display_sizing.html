@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Display Sizing</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Display Sizing</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(docorator)</span></code></pre></div>
+<div id="table-sizing" class="section level2">
+<h2>Table sizing</h2>
+<p>Users can take advantage of {docorator}’s built-in scaling or opt to
+instead specify column widths via {gt}. Both techniques are described
+below.</p>
+<div id="dynamic-scaling" class="section level3">
+<h3>Dynamic scaling</h3>
+<p>For {tfrmt} and {gt} tables, {docorator} will make its best attempt
+to fit the display to the allotted area. Specifically, using the default
+setting of <code>tbl_scale = TRUE</code> will adjust all of the columns
+to fit the allotted display. This option will first size the stub
+column(s) (i.e. those columns on the left-hand side containing row
+group/label information) according to <code>tbl_stub_pct</code> option,
+then make the remaining columns equal width.</p>
+<p>{docorator} uses the function <code>scale_gt()</code> to apply table
+sizing under the hood. There is no need to call this function directly
+for the pdf creation but it is used to illustrate the examples
+below.</p>
+<p>Let’s say we have a table with 1 stub column and 4 other columns,
+like so:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>mytbl <span class="ot">&lt;-</span> gtcars <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">select</span>(mfr, model, year, msrp, ctry_origin) <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>   <span class="fu">gt</span>(<span class="at">rowname_col =</span> <span class="st">&quot;mfr&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>   <span class="fu">tab_style</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="fu">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;right&quot;</span>)),</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_body</span>(), <span class="fu">cells_stub</span>(), <span class="fu">cells_column_labels</span>())</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>   )</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>mytbl</span></code></pre></div>
+<div id="fhrqchzmog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fhrqchzmog table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#fhrqchzmog thead, #fhrqchzmog tbody, #fhrqchzmog tfoot, #fhrqchzmog tr, #fhrqchzmog td, #fhrqchzmog th {
+border-style: none;
+}
+#fhrqchzmog p {
+margin: 0;
+padding: 0;
+}
+#fhrqchzmog .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#fhrqchzmog .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#fhrqchzmog .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#fhrqchzmog .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#fhrqchzmog .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#fhrqchzmog .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#fhrqchzmog .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#fhrqchzmog .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#fhrqchzmog .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#fhrqchzmog .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#fhrqchzmog .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#fhrqchzmog .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#fhrqchzmog .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#fhrqchzmog .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#fhrqchzmog .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#fhrqchzmog .gt_from_md > :first-child {
+margin-top: 0;
+}
+#fhrqchzmog .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#fhrqchzmog .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#fhrqchzmog .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fhrqchzmog .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#fhrqchzmog .gt_row_group_first td {
+border-top-width: 2px;
+}
+#fhrqchzmog .gt_row_group_first th {
+border-top-width: 2px;
+}
+#fhrqchzmog .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fhrqchzmog .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#fhrqchzmog .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#fhrqchzmog .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#fhrqchzmog .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fhrqchzmog .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#fhrqchzmog .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#fhrqchzmog .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#fhrqchzmog .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#fhrqchzmog .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#fhrqchzmog .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fhrqchzmog .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#fhrqchzmog .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#fhrqchzmog .gt_left {
+text-align: left;
+}
+#fhrqchzmog .gt_center {
+text-align: center;
+}
+#fhrqchzmog .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#fhrqchzmog .gt_font_normal {
+font-weight: normal;
+}
+#fhrqchzmog .gt_font_bold {
+font-weight: bold;
+}
+#fhrqchzmog .gt_font_italic {
+font-style: italic;
+}
+#fhrqchzmog .gt_super {
+font-size: 65%;
+}
+#fhrqchzmog .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#fhrqchzmog .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#fhrqchzmog .gt_indent_1 {
+text-indent: 5px;
+}
+#fhrqchzmog .gt_indent_2 {
+text-indent: 10px;
+}
+#fhrqchzmog .gt_indent_3 {
+text-indent: 15px;
+}
+#fhrqchzmog .gt_indent_4 {
+text-indent: 20px;
+}
+#fhrqchzmog .gt_indent_5 {
+text-indent: 25px;
+}
+#fhrqchzmog .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#fhrqchzmog div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="a::stub"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="model">model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="year">year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="msrp">msrp</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="ctry_origin">ctry_origin</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ford</th>
+<td headers="stub_1_1 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GT</td>
+<td headers="stub_1_1 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="stub_1_1 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">447000</td>
+<td headers="stub_1_1 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">United States</td></tr>
+    <tr><th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_2 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Speciale</td>
+<td headers="stub_1_2 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_2 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">291744</td>
+<td headers="stub_1_2 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_3 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Spider</td>
+<td headers="stub_1_3 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_3 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">263553</td>
+<td headers="stub_1_3 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_4 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Italia</td>
+<td headers="stub_1_4 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2014</td>
+<td headers="stub_1_4 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">233509</td>
+<td headers="stub_1_4 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_5 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">488 GTB</td>
+<td headers="stub_1_5 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2016</td>
+<td headers="stub_1_5 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">245400</td>
+<td headers="stub_1_5 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_6" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_6 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">California</td>
+<td headers="stub_1_6 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_6 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">198973</td>
+<td headers="stub_1_6 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_7" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_7 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GTC4Lusso</td>
+<td headers="stub_1_7 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="stub_1_7 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">298000</td>
+<td headers="stub_1_7 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_8" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_8 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">FF</td>
+<td headers="stub_1_8 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_8 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">295000</td>
+<td headers="stub_1_8 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_9" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_9 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">F12Berlinetta</td>
+<td headers="stub_1_9 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_9 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">319995</td>
+<td headers="stub_1_9 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_10" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_10 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">LaFerrari</td>
+<td headers="stub_1_10 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_10 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">1416362</td>
+<td headers="stub_1_10 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>If we set <code>tbl_stub_pct=0.4</code>, the stub column will occupy
+40% of the full width, and the 4 data columns will each occupy 15% of
+the full width, totaling 100% width.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>mytbl <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="fu">scale_gt</span>(<span class="at">tbl_stub_pct =</span> <span class="fl">0.4</span>)</span></code></pre></div>
+<div id="dfvxrfvhhz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dfvxrfvhhz table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#dfvxrfvhhz thead, #dfvxrfvhhz tbody, #dfvxrfvhhz tfoot, #dfvxrfvhhz tr, #dfvxrfvhhz td, #dfvxrfvhhz th {
+border-style: none;
+}
+#dfvxrfvhhz p {
+margin: 0;
+padding: 0;
+}
+#dfvxrfvhhz .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#dfvxrfvhhz .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#dfvxrfvhhz .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#dfvxrfvhhz .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#dfvxrfvhhz .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#dfvxrfvhhz .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#dfvxrfvhhz .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#dfvxrfvhhz .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#dfvxrfvhhz .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#dfvxrfvhhz .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#dfvxrfvhhz .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#dfvxrfvhhz .gt_from_md > :first-child {
+margin-top: 0;
+}
+#dfvxrfvhhz .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#dfvxrfvhhz .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#dfvxrfvhhz .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#dfvxrfvhhz .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#dfvxrfvhhz .gt_row_group_first td {
+border-top-width: 2px;
+}
+#dfvxrfvhhz .gt_row_group_first th {
+border-top-width: 2px;
+}
+#dfvxrfvhhz .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#dfvxrfvhhz .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#dfvxrfvhhz .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#dfvxrfvhhz .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#dfvxrfvhhz .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#dfvxrfvhhz .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#dfvxrfvhhz .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#dfvxrfvhhz .gt_left {
+text-align: left;
+}
+#dfvxrfvhhz .gt_center {
+text-align: center;
+}
+#dfvxrfvhhz .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#dfvxrfvhhz .gt_font_normal {
+font-weight: normal;
+}
+#dfvxrfvhhz .gt_font_bold {
+font-weight: bold;
+}
+#dfvxrfvhhz .gt_font_italic {
+font-style: italic;
+}
+#dfvxrfvhhz .gt_super {
+font-size: 65%;
+}
+#dfvxrfvhhz .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#dfvxrfvhhz .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#dfvxrfvhhz .gt_indent_1 {
+text-indent: 5px;
+}
+#dfvxrfvhhz .gt_indent_2 {
+text-indent: 10px;
+}
+#dfvxrfvhhz .gt_indent_3 {
+text-indent: 15px;
+}
+#dfvxrfvhhz .gt_indent_4 {
+text-indent: 20px;
+}
+#dfvxrfvhhz .gt_indent_5 {
+text-indent: 25px;
+}
+#dfvxrfvhhz .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#dfvxrfvhhz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+<table class="gt_table" style="table-layout:fixed;width:100%;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col style="width:40%;" />
+    <col style="width:15%;" />
+    <col style="width:15%;" />
+    <col style="width:15%;" />
+    <col style="width:15%;" />
+  </colgroup>
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="a::stub"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="model">model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="year">year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="msrp">msrp</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="ctry_origin">ctry_origin</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ford</th>
+<td headers="stub_1_1 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GT</td>
+<td headers="stub_1_1 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="stub_1_1 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">447000</td>
+<td headers="stub_1_1 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">United States</td></tr>
+    <tr><th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_2 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Speciale</td>
+<td headers="stub_1_2 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_2 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">291744</td>
+<td headers="stub_1_2 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_3 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Spider</td>
+<td headers="stub_1_3 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_3 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">263553</td>
+<td headers="stub_1_3 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_4 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Italia</td>
+<td headers="stub_1_4 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2014</td>
+<td headers="stub_1_4 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">233509</td>
+<td headers="stub_1_4 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_5 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">488 GTB</td>
+<td headers="stub_1_5 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2016</td>
+<td headers="stub_1_5 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">245400</td>
+<td headers="stub_1_5 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_6" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_6 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">California</td>
+<td headers="stub_1_6 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_6 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">198973</td>
+<td headers="stub_1_6 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_7" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_7 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GTC4Lusso</td>
+<td headers="stub_1_7 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="stub_1_7 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">298000</td>
+<td headers="stub_1_7 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_8" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_8 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">FF</td>
+<td headers="stub_1_8 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_8 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">295000</td>
+<td headers="stub_1_8 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_9" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_9 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">F12Berlinetta</td>
+<td headers="stub_1_9 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_9 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">319995</td>
+<td headers="stub_1_9 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+    <tr><th id="stub_1_10" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="stub_1_10 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">LaFerrari</td>
+<td headers="stub_1_10 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="stub_1_10 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">1416362</td>
+<td headers="stub_1_10 ctry_origin" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Italy</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>For a table with 2 stub columns, like the one below, settings
+<code>tbl_stub_pct=0.4</code> will result 20% width for each stub
+column, resulting in 40% total for both stubs.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>mytbl <span class="ot">&lt;-</span> gtcars <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">select</span>(mfr, model, year, msrp, ctry_origin) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>   <span class="fu">gt</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>      <span class="at">groupname_col =</span> <span class="st">&quot;ctry_origin&quot;</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>      <span class="at">rowname_col =</span> <span class="st">&quot;mfr&quot;</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>      <span class="at">row_group_as_column =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>   <span class="fu">tab_style</span>(</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="fu">c</span>(<span class="st">&quot;left&quot;</span>,<span class="st">&quot;right&quot;</span>)),</span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_body</span>(), <span class="fu">cells_stub</span>(), <span class="fu">cells_column_labels</span>())</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>   )</span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>mytbl</span></code></pre></div>
+<div id="lcmmibludt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lcmmibludt table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#lcmmibludt thead, #lcmmibludt tbody, #lcmmibludt tfoot, #lcmmibludt tr, #lcmmibludt td, #lcmmibludt th {
+border-style: none;
+}
+#lcmmibludt p {
+margin: 0;
+padding: 0;
+}
+#lcmmibludt .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#lcmmibludt .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#lcmmibludt .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#lcmmibludt .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#lcmmibludt .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#lcmmibludt .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#lcmmibludt .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#lcmmibludt .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#lcmmibludt .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#lcmmibludt .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#lcmmibludt .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#lcmmibludt .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#lcmmibludt .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#lcmmibludt .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#lcmmibludt .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#lcmmibludt .gt_from_md > :first-child {
+margin-top: 0;
+}
+#lcmmibludt .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#lcmmibludt .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#lcmmibludt .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#lcmmibludt .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#lcmmibludt .gt_row_group_first td {
+border-top-width: 2px;
+}
+#lcmmibludt .gt_row_group_first th {
+border-top-width: 2px;
+}
+#lcmmibludt .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#lcmmibludt .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#lcmmibludt .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#lcmmibludt .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#lcmmibludt .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#lcmmibludt .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#lcmmibludt .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#lcmmibludt .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#lcmmibludt .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#lcmmibludt .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#lcmmibludt .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#lcmmibludt .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#lcmmibludt .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#lcmmibludt .gt_left {
+text-align: left;
+}
+#lcmmibludt .gt_center {
+text-align: center;
+}
+#lcmmibludt .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#lcmmibludt .gt_font_normal {
+font-weight: normal;
+}
+#lcmmibludt .gt_font_bold {
+font-weight: bold;
+}
+#lcmmibludt .gt_font_italic {
+font-style: italic;
+}
+#lcmmibludt .gt_super {
+font-size: 65%;
+}
+#lcmmibludt .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#lcmmibludt .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#lcmmibludt .gt_indent_1 {
+text-indent: 5px;
+}
+#lcmmibludt .gt_indent_2 {
+text-indent: 10px;
+}
+#lcmmibludt .gt_indent_3 {
+text-indent: 15px;
+}
+#lcmmibludt .gt_indent_4 {
+text-indent: 20px;
+}
+#lcmmibludt .gt_indent_5 {
+text-indent: 25px;
+}
+#lcmmibludt .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#lcmmibludt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="2" scope="colgroup" id="a::stub"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="model">model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="year">year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="msrp">msrp</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_row_group_first"><td headers="United States stub_2_1 stub_1" rowspan="1" class="gt_row gt_left gt_stub_row_group">United States</td>
+<th id="stub_2_1" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ford</th>
+<td headers="United States stub_2_1 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GT</td>
+<td headers="United States stub_2_1 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="United States stub_2_1 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">447000</td></tr>
+    <tr class="gt_row_group_first"><td headers="Italy stub_2_2 stub_1" rowspan="9" class="gt_row gt_left gt_stub_row_group">Italy</td>
+<th id="stub_2_2" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy stub_2_2 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Speciale</td>
+<td headers="Italy stub_2_2 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy stub_2_2 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">291744</td></tr>
+    <tr><th id="model_3" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_3 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Spider</td>
+<td headers="Italy model_3 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_3 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">263553</td></tr>
+    <tr><th id="model_4" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_4 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Italia</td>
+<td headers="Italy model_4 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2014</td>
+<td headers="Italy model_4 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">233509</td></tr>
+    <tr><th id="model_5" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_5 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">488 GTB</td>
+<td headers="Italy model_5 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2016</td>
+<td headers="Italy model_5 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">245400</td></tr>
+    <tr><th id="model_6" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_6 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">California</td>
+<td headers="Italy model_6 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_6 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">198973</td></tr>
+    <tr><th id="model_7" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_7 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GTC4Lusso</td>
+<td headers="Italy model_7 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="Italy model_7 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">298000</td></tr>
+    <tr><th id="model_8" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_8 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">FF</td>
+<td headers="Italy model_8 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_8 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">295000</td></tr>
+    <tr><th id="model_9" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_9 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">F12Berlinetta</td>
+<td headers="Italy model_9 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_9 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">319995</td></tr>
+    <tr><th id="model_10" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_10 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">LaFerrari</td>
+<td headers="Italy model_10 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_10 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">1416362</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>mytbl <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">scale_gt</span>(<span class="at">tbl_stub_pct =</span> <span class="fl">0.4</span>)</span></code></pre></div>
+<div id="ohoojncsxn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ohoojncsxn table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#ohoojncsxn thead, #ohoojncsxn tbody, #ohoojncsxn tfoot, #ohoojncsxn tr, #ohoojncsxn td, #ohoojncsxn th {
+border-style: none;
+}
+#ohoojncsxn p {
+margin: 0;
+padding: 0;
+}
+#ohoojncsxn .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#ohoojncsxn .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#ohoojncsxn .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#ohoojncsxn .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#ohoojncsxn .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#ohoojncsxn .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#ohoojncsxn .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#ohoojncsxn .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#ohoojncsxn .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#ohoojncsxn .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#ohoojncsxn .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#ohoojncsxn .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#ohoojncsxn .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#ohoojncsxn .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#ohoojncsxn .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#ohoojncsxn .gt_from_md > :first-child {
+margin-top: 0;
+}
+#ohoojncsxn .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#ohoojncsxn .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#ohoojncsxn .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#ohoojncsxn .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#ohoojncsxn .gt_row_group_first td {
+border-top-width: 2px;
+}
+#ohoojncsxn .gt_row_group_first th {
+border-top-width: 2px;
+}
+#ohoojncsxn .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#ohoojncsxn .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#ohoojncsxn .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#ohoojncsxn .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#ohoojncsxn .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#ohoojncsxn .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#ohoojncsxn .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#ohoojncsxn .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#ohoojncsxn .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#ohoojncsxn .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#ohoojncsxn .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#ohoojncsxn .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#ohoojncsxn .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#ohoojncsxn .gt_left {
+text-align: left;
+}
+#ohoojncsxn .gt_center {
+text-align: center;
+}
+#ohoojncsxn .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#ohoojncsxn .gt_font_normal {
+font-weight: normal;
+}
+#ohoojncsxn .gt_font_bold {
+font-weight: bold;
+}
+#ohoojncsxn .gt_font_italic {
+font-style: italic;
+}
+#ohoojncsxn .gt_super {
+font-size: 65%;
+}
+#ohoojncsxn .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#ohoojncsxn .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#ohoojncsxn .gt_indent_1 {
+text-indent: 5px;
+}
+#ohoojncsxn .gt_indent_2 {
+text-indent: 10px;
+}
+#ohoojncsxn .gt_indent_3 {
+text-indent: 15px;
+}
+#ohoojncsxn .gt_indent_4 {
+text-indent: 20px;
+}
+#ohoojncsxn .gt_indent_5 {
+text-indent: 25px;
+}
+#ohoojncsxn .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#ohoojncsxn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+<table class="gt_table" style="table-layout:fixed;width:100%;" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <colgroup>
+    <col style="width:20%;" />
+    <col style="width:20%;" />
+    <col style="width:20%;" />
+    <col style="width:20%;" />
+    <col style="width:20%;" />
+  </colgroup>
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="2" scope="colgroup" id="a::stub"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="model">model</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="year">year</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;" scope="col" id="msrp">msrp</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_row_group_first"><td headers="United States stub_2_1 stub_1" rowspan="1" class="gt_row gt_left gt_stub_row_group">United States</td>
+<th id="stub_2_1" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ford</th>
+<td headers="United States stub_2_1 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GT</td>
+<td headers="United States stub_2_1 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="United States stub_2_1 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">447000</td></tr>
+    <tr class="gt_row_group_first"><td headers="Italy stub_2_2 stub_1" rowspan="9" class="gt_row gt_left gt_stub_row_group">Italy</td>
+<th id="stub_2_2" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy stub_2_2 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Speciale</td>
+<td headers="Italy stub_2_2 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy stub_2_2 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">291744</td></tr>
+    <tr><th id="model_3" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_3 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Spider</td>
+<td headers="Italy model_3 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_3 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">263553</td></tr>
+    <tr><th id="model_4" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_4 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">458 Italia</td>
+<td headers="Italy model_4 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2014</td>
+<td headers="Italy model_4 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">233509</td></tr>
+    <tr><th id="model_5" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_5 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">488 GTB</td>
+<td headers="Italy model_5 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2016</td>
+<td headers="Italy model_5 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">245400</td></tr>
+    <tr><th id="model_6" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_6 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">California</td>
+<td headers="Italy model_6 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_6 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">198973</td></tr>
+    <tr><th id="model_7" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_7 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">GTC4Lusso</td>
+<td headers="Italy model_7 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2017</td>
+<td headers="Italy model_7 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">298000</td></tr>
+    <tr><th id="model_8" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_8 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">FF</td>
+<td headers="Italy model_8 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_8 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">295000</td></tr>
+    <tr><th id="model_9" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_9 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">F12Berlinetta</td>
+<td headers="Italy model_9 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_9 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">319995</td></tr>
+    <tr><th id="model_10" scope="row" class="gt_row gt_left gt_stub" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">Ferrari</th>
+<td headers="Italy model_10 model" class="gt_row gt_left" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">LaFerrari</td>
+<td headers="Italy model_10 year" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">2015</td>
+<td headers="Italy model_10 msrp" class="gt_row gt_right" style="border-left-width: 1px; border-left-style: solid; border-left-color: #000000; border-right-width: 1px; border-right-style: solid; border-right-color: #000000;">1416362</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="manual-scaling" class="section level3">
+<h3>Manual scaling</h3>
+<p>For full control over column widths, it is recommended to use
+<code>gt::cols_width()</code> on the table prior to {docorator}. By
+default, {docorator}’s dynamic scaling will override these widths, so it
+is important to set <code>tbl_scale = FALSE</code>. Note: only widths
+specified in % (i.e using either “5%” or pct(5)) are accepted. If widths
+are specified in px then a warning will be issued and dynamic scaling
+will apply. Widths should also total no more than 100%.</p>
+<p>If only a subset of the columns are covered in the
+<code>cols_width()</code>, {docorator} will expand the remaining columns
+to fit the allotted width of the display area.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>mytbl <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">cols_width</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>    msrp <span class="sc">~</span> <span class="fu">pct</span>(<span class="dv">50</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="fu">as_docorator</span>(<span class="at">tbl_scale =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Alternatively, if all columns are covered in the
+<code>cols_width()</code>, {docorator} will not apply <em>any</em>
+resizing to fit the allotted area.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>mytbl <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">cols_width</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    ctry_origin <span class="sc">~</span> <span class="fu">pct</span>(<span class="dv">15</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    mfr <span class="sc">~</span> <span class="fu">pct</span>(<span class="dv">10</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>    model <span class="sc">~</span> <span class="fu">pct</span>(<span class="dv">7</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>    year <span class="sc">~</span> <span class="fu">pct</span>(<span class="dv">9</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>    msrp <span class="sc">~</span> <span class="fu">pct</span>(<span class="dv">15</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  <span class="fu">as_docorator</span>(<span class="at">tbl_scale =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="figure-sizing" class="section level2">
+<h2>Figure sizing</h2>
+<p>Figure sizes can be adjusted via the <code>fig_dim</code> argument of
+<code>as_docorator()</code>. This argument expects a numeric vector of
+length 2, where the first and second elements are the height and width
+in inches, respectively. For example, the default <code>c(5,8)</code>
+translates to a height of 5 inches and width of 8 inches.</p>
+</div>
+<div id="future-developments" class="section level2">
+<h2>Future developments</h2>
+<p>More customization options will be offered in future releases. If you
+have a need to customize something that is not currently offered, please
+file an <a href="https://github.com/GSK-Biostatistics/docorator/issues">issue</a>.</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

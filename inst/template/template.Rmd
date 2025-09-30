@@ -1,0 +1,54 @@
+---
+output:
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex:  false  
+classoption: landscape
+params:
+  x: NULL 
+  header: NULL
+  footer: NULL
+  geometry: NULL
+  transform: NULL
+fontsize: "`r paste0(params$x$fontsize, 'pt')`"
+geometry: "`r params$geometry`" 
+header-includes:  
+  - \renewcommand*\familydefault{\ttdefault}
+  - \usepackage{fancyhdr, lastpage}
+  - \usepackage{booktabs, longtable, colortbl, array, multirow, anyfontsize}
+  - \usepackage[labelformat=empty]{caption} 
+  - \IfFileExists{header.tex}{\input{header.tex}}{}
+fig_crop: FALSE
+---
+
+<!--- Define Headers and Footers --->
+```{=tex}
+\fancypagestyle{plain}{
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhf{}%
+  `r params$header`
+  `r params$footer`
+}
+\pagestyle{plain} 
+```
+ 
+\centering
+
+
+```{r echo = FALSE, results = "asis"}
+display <- params$x$display
+if(identical(class(display), "list")) {
+  for (i in 1:length(display)) {
+    new_docorator <- params$x
+    new_docorator$display <- display[[i]]
+    create_chunk(new_docorator,params$transform)
+    if(length(display)>1){
+      cat("\\pagebreak\n")
+    }
+  }
+} else{
+  create_chunk(params$x, params$transform)
+}
+```
+
+

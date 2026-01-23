@@ -1,6 +1,6 @@
 Package: docorator
 Title: Docorate (Decorate + Output) Displays
-Version: 0.5.1
+Version: 0.5.2
 Authors@R: 
     c(person(given = "Becca", family = "Krouse", email = "becca.z.krouse@gsk.com", role = c("aut", "cre")),
       person(given = "Shannon", family = "Haughton", email = "shannon.l.haughton@gsk.com", role = c("aut")),
@@ -21,7 +21,7 @@ URL: https://GSK-Biostatistics.github.io/docorator/,
 BugReports: https://github.com/GSK-Biostatistics/docorator/issues
 Depends: R (>= 4.1.0)
 NeedsCompilation: no
-Packaged: 2026-01-08 15:43:40 UTC; bkrouse
+Packaged: 2026-01-23 21:10:43 UTC; bkrouse
 Author: Becca Krouse [aut, cre],
   Shannon Haughton [aut],
   Seongbin Hong [aut],
@@ -29,4 +29,4 @@ Author: Becca Krouse [aut, cre],
   GlaxoSmithKline Research & Development Limited [cph, fnd]
 Maintainer: Becca Krouse <becca.z.krouse@gsk.com>
 Repository: CRAN
-Date/Publication: 2026-01-08 19:40:01 UTC
+Date/Publication: 2026-01-23 21:20:17 UTC

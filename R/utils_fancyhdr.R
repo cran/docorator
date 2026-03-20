@@ -152,7 +152,7 @@ check_fancyhdr <- function(x, chr_ok = FALSE){
   }
 
   if (!inherits(x, class_ok)) {
-    cli::cli_abort("The {.arg {caller_arg(x)}} argument must be class {.cls {class_ok}} or empty, not {.obj_type_friendly {x}}.",
+    cli::cli_abort("The {.arg {rlang::caller_arg(x)}} argument must be class {.cls {class_ok}} or empty, not {.obj_type_friendly {x}}.",
               call = rlang::caller_env())
   }
   invisible(x)
@@ -264,7 +264,14 @@ process_rows <- function(x, type = c("head","foot"), escape_latex = TRUE){
       dplyr::across(dplyr::everything(), \(x) as.character(x) |>
                tidyr::replace_na("\\phantom{}"))
     ) |>
-  dplyr::summarise(dplyr::across(dplyr::everything(), \(x) paste(x, collapse = "\\\\")))
+  dplyr::summarise(
+    dplyr::across(
+      dplyr::everything(), \(x) {
+        x_braces <- paste0("{", x, "}")
+        paste(x_braces, collapse = "\\\\")
+      }
+    )
+  )
 
   paste0("\\fancy", type, "[L]{\\begin{tabular}[b]{@{}l@{}}", x_df$left, "\\end{tabular}}",
          "\\fancy", type, "[C]{\\begin{tabular}[b]{@{}c@{}}", x_df$center, "\\end{tabular}}",
@@ -325,4 +332,112 @@ hf_escape <- function(x) {
   escaped_full <- latex_text |>
     stringr::str_replace_all(page_num_pattern)
 
+}
+
+
+#' Wrap `fancyrow`s
+#'
+#' @param x object with `fancyrow`s to wrap
+#' @param chars number of characters to wrap on
+#'
+#' @return `docorator` object with wrapped headers and footers
+#' @noRd
+#' @keywords internal
+#'
+#' @examples
+#' header <- fancyhead(
+#' fancyrow(left = "Protocol: 12345"),
+#' fancyrow(center = "Table 1.1 Demographic Summary"))
+#'
+#' fancywrap(header, 5)
+#'
+fancywrap <- function(x, chars){
+  UseMethod("fancywrap", x)
+}
+
+#' @rdname fancywrap
+#' @export
+#' @noRd
+fancywrap.default <- function(x, chars){
+  if(is.null(x)){
+    return(NULL)
+  }
+  x
+}
+
+#' @rdname fancywrap
+#' @export
+#' @noRd
+fancywrap.fancyrow <- function(x, chars){
+  # which elements have strings in them
+  str_to_wrap <- which(!is.na(x))
+  if (length(str_to_wrap) != 1) {
+    # check if the total of the elements are too long for the page
+    total_length <- sum(nchar(x[str_to_wrap]))
+    total_string <- paste(x[str_to_wrap], collapse = ", ")
+    if(total_length>chars){
+      cli::cli_text("Note: Text is only wrapped for `fancyrows` with one element. Your fancyrow text {.arg {total_string}} is over the character limit of {.arg {chars}} and could overrun the page margins.")
+    }
+    wrapped_rows <- list(x)
+  }
+  else{
+    row <-  x[[str_to_wrap]]
+    # let stringi do the hard part of the string wrapping
+    rows <- stringi::stri_wrap(row, chars, whitespace_only = TRUE)
+
+    wrapped_rows <- lapply(rows, function(x) {
+      args <- list(x)
+      names(args) <- names(str_to_wrap)
+      do.call(fancyrow, args)
+    })
+
+  }
+
+  wrapped_rows
+}
+
+#' @rdname fancywrap
+#' @export
+#' @noRd
+fancywrap.fancyhead <- function(x, chars) {
+  wrapped_headers <- lapply(x, function(row) {
+    fancywrap(row, chars)
+  })
+
+  do.call(fancyhead, unlist(wrapped_headers, recursive = FALSE))
+}
+
+#' @rdname fancywrap
+#' @export
+#' @noRd
+fancywrap.fancyfoot <- function(x, chars){
+  wrapped_footers <- lapply(x, function(row){
+    fancywrap(row, chars)
+  })
+
+  do.call(fancyfoot, unlist(wrapped_footers, recursive=FALSE))
+}
+
+
+#' @rdname fancywrap
+#' @export
+#' @noRd
+fancywrap.docorator <- function(x, chars){
+  # width in pts is roughly 50% font size
+  # 1 inch 72 points
+  # 11 inch page without margins, 9 inches
+  # per page roughly 630 points
+  # character width
+  ch_width <- x$fontsize * 0.5
+  characters <- floor(630 / ch_width)
+
+  if(!is.null(x$header)){
+    x$header <- fancywrap(x$header, chars = characters)
+  }
+
+  if(!is.null(x$footer)){
+    x$footer <- fancywrap(x$footer, chars = characters)
+  }
+
+  x
 }

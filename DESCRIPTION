@@ -1,6 +1,6 @@
 Package: docorator
 Title: Docorate (Decorate + Output) Displays
-Version: 0.5.2
+Version: 0.6.0
 Authors@R: 
     c(person(given = "Becca", family = "Krouse", email = "becca.z.krouse@gsk.com", role = c("aut", "cre")),
       person(given = "Shannon", family = "Haughton", email = "shannon.l.haughton@gsk.com", role = c("aut")),
@@ -12,7 +12,8 @@ License: Apache License 2.0
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 Imports: gt (>= 1.2.0), rmarkdown, rlang, cli, dplyr, rstudioapi,
-        purrr, stringr, tidyr, lifecycle, png, knitr, withr, quarto
+        purrr, stringr, stringi, tidyr, lifecycle, png, knitr, withr,
+        quarto
 Suggests: rprojroot, testthat (>= 3.0.0), tfrmt, pdftools, ggplot2
 Config/testthat/edition: 3
 VignetteBuilder: knitr
@@ -21,7 +22,7 @@ URL: https://GSK-Biostatistics.github.io/docorator/,
 BugReports: https://github.com/GSK-Biostatistics/docorator/issues
 Depends: R (>= 4.1.0)
 NeedsCompilation: no
-Packaged: 2026-01-23 21:10:43 UTC; bkrouse
+Packaged: 2026-03-20 16:46:53 UTC; bkrouse
 Author: Becca Krouse [aut, cre],
   Shannon Haughton [aut],
   Seongbin Hong [aut],
@@ -29,4 +30,4 @@ Author: Becca Krouse [aut, cre],
   GlaxoSmithKline Research & Development Limited [cph, fnd]
 Maintainer: Becca Krouse <becca.z.krouse@gsk.com>
 Repository: CRAN
-Date/Publication: 2026-01-23 21:20:17 UTC
+Date/Publication: 2026-03-20 17:20:02 UTC

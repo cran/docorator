@@ -438,9 +438,10 @@ numbering and time stamps. These are prefixed with
 <p>{docorator} will automatically adjust the allowed height for headers
 and footers according to the lines of text required. If many lines of
 headers and/or footers are specified, this cuts down on the available
-height for the table/figure. Additionally, {docorator} does not
-auto-wrap long lines of text, so it is recommended you keep your left,
-right, and center text as brief as possible.</p>
+height for the table/figure.</p>
+<p><em>NEW as of v0.6.0</em> {docorator} can auto-wrap long lines of
+text in PDF documents via the <code>fancywrap</code> argument of
+<code>render_pdf()</code>. See <code>?render_pdf</code> for details.</p>
 <p>Please file an <a href="https://github.com/GSK-Biostatistics/docorator/issues">issue</a>
 if you discover unexpected results or problems related to headers and
 footers.</p>
